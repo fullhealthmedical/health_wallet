@@ -1,0 +1,27 @@
+services:
+  mongo:
+    image: mongo
+    volumes:
+      - mongodb_data:/data/db
+    ports:
+      - "${MONGODB_PORT:-27017}:27017"
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - .:/rails
+      - bundle_cache:/usr/local/bundle
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo
+    environment:
+      - MONGODB_HOST=mongo
+    stdin_open: true
+    tty: true
+
+volumes:
+  mongodb_data:
+  bundle_cache:

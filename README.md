@@ -8,7 +8,59 @@ A Rails application for managing patient health records, assessments, and observ
 - Rails 8.1+
 - MongoDB 6.0+
 
-## Setup
+## Quick Start with Docker
+
+The fastest way to run the application in development:
+
+```bash
+# Build and start all services
+docker compose up --build
+
+# In a separate terminal, seed the database (first time only)
+docker compose exec web bin/rails db:seed
+```
+
+Visit [http://localhost:3000](http://localhost:3000)
+
+### Configuration
+
+You can customize ports via environment variables:
+
+```bash
+# Use a different MongoDB port (default: 27017)
+MONGODB_PORT=27018 docker compose up --build
+```
+
+### Common Docker Commands
+
+```bash
+# Start services in the background
+docker compose up -d
+
+# View logs
+docker compose logs -f web
+
+# Run Rails console
+docker compose exec web bin/rails console
+
+# Run tests
+docker compose exec web bin/rails test
+
+# Stop services
+docker compose down
+
+# Stop services and remove volumes (clean slate)
+docker compose down -v
+```
+
+---
+
+## Manual Setup (without Docker)
+
+### Requirements
+
+- Ruby 3.4+ installed locally
+- MongoDB 6.0+ running locally or via Docker
 
 ### 1. Install Dependencies
 

@@ -1,0 +1,39 @@
+# Development Dockerfile for Health Wallet
+ARG RUBY_VERSION=3.4.8
+FROM docker.io/library/ruby:$RUBY_VERSION-slim
+
+# Rails app lives here
+WORKDIR /rails
+
+# Install packages needed for development
+RUN apt-get update -qq && \
+    apt-get install --no-install-recommends -y \
+    build-essential \
+    git \
+    libyaml-dev \
+    pkg-config \
+    curl \
+    libvips \
+    sqlite3 && \
+    rm -rf /var/lib/apt/lists /var/cache/apt/archives
+
+# Install bundler
+RUN gem install bundler
+
+# Set development environment
+ENV RAILS_ENV=development
+
+# Copy Gemfile for initial bundle install
+COPY Gemfile Gemfile.lock ./
+
+# Install gems
+RUN bundle install
+
+# Copy the rest of the application
+COPY . .
+
+# Expose the Rails server port
+EXPOSE 3000
+
+# Remove stale PID file and start the Rails server
+CMD ["sh", "-c", "rm -f tmp/pids/server.pid && bin/rails server -b 0.0.0.0"]
