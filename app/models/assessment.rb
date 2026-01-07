@@ -6,4 +6,6 @@ class Assessment
   field :reference, type: String
 
   belongs_to :patient
+
+  embeds_many :observations
 end
