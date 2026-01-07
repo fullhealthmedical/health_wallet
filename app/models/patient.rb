@@ -5,4 +5,6 @@ class Patient
   field :name, type: String
   field :dob, type: Date
   field :sex_at_birth, type: String
+
+  has_many :assessments
 end
