@@ -1,0 +1,61 @@
+<div class="assessment-detail">
+  <div class="assessment-header">
+    <%= link_to "← Cancel", assessment_path(@assessment), class: "back-link" %>
+    <h1>Edit Assessment <%= @assessment.reference %></h1>
+  </div>
+
+  <div class="assessment-info">
+    <div class="info-item">
+      <span class="info-label">Patient</span>
+      <span class="info-value"><%= @patient.name %></span>
+    </div>
+    <div class="info-item">
+      <span class="info-label">Date</span>
+      <span class="info-value"><%= @assessment.date %></span>
+    </div>
+    <div class="info-item">
+      <span class="info-label">Reference</span>
+      <span class="info-value"><%= @assessment.reference %></span>
+    </div>
+  </div>
+
+  <%= form_with model: @assessment, class: "observations-form" do |f| %>
+    <div class="observations-section">
+      <h2>Observations (<%= @assessment.observations.count %>)</h2>
+
+      <% if @assessment.observations.any? %>
+        <table class="observations-table editable">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Code</th>
+              <th>Value</th>
+              <th>Units</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= f.fields_for :observations do |obs_form| %>
+              <tr>
+                <td><%= obs_form.object.name %></td>
+                <td><code><%= obs_form.object.code %></code></td>
+                <td>
+                  <%= obs_form.number_field :value, step: 0.1, class: "form-input" %>
+                </td>
+                <td>
+                  <%= obs_form.text_field :units, class: "form-input form-input-small" %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% else %>
+        <div class="no-observations">No observations to edit.</div>
+      <% end %>
+    </div>
+
+    <div class="form-actions">
+      <%= link_to "Cancel", assessment_path(@assessment), class: "btn btn-secondary" %>
+      <%= f.submit "Save Changes", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

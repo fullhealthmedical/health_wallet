@@ -8,4 +8,5 @@ class Assessment
   belongs_to :patient
 
   embeds_many :observations
+  accepts_nested_attributes_for :observations
 end

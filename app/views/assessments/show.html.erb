@@ -1,8 +1,15 @@
 <div class="assessment-detail">
   <div class="assessment-header">
     <%= link_to "← Back to #{@patient.name}", patient_path(@patient), class: "back-link" %>
-    <h1>Assessment <%= @assessment.reference %></h1>
+    <div class="header-row">
+      <h1>Assessment <%= @assessment.reference %></h1>
+      <%= link_to "Edit", edit_assessment_path(@assessment), class: "btn btn-secondary" %>
+    </div>
   </div>
+
+  <% if notice %>
+    <div class="flash-notice"><%= notice %></div>
+  <% end %>
 
   <div class="assessment-info">
     <div class="info-item">
