@@ -1,0 +1,44 @@
+<div class="patient-detail">
+  <div class="patient-header">
+    <%= link_to "← Back to Patients", patients_path, class: "back-link" %>
+    <h1><%= @patient.name %></h1>
+  </div>
+
+  <div class="patient-info">
+    <div class="info-item">
+      <span class="info-label">Date of Birth</span>
+      <span class="info-value"><%= @patient.dob %></span>
+    </div>
+    <div class="info-item">
+      <span class="info-label">Sex at Birth</span>
+      <span class="info-value"><%= @patient.sex_at_birth %></span>
+    </div>
+  </div>
+
+  <div class="assessments-section">
+    <h2>Assessments (<%= @assessments.count %>)</h2>
+
+    <% if @assessments.any? %>
+      <table class="assessments-table">
+        <thead>
+          <tr>
+            <th>Reference</th>
+            <th>Date</th>
+            <th>Observations</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @assessments.each do |assessment| %>
+            <tr>
+              <td><%= link_to assessment.reference, assessment_path(assessment), class: "assessment-link" %></td>
+              <td><%= assessment.date %></td>
+              <td><%= assessment.observations.count %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <div class="no-assessments">No assessments recorded for this patient.</div>
+    <% end %>
+  </div>
+</div>

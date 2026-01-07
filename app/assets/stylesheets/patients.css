@@ -1,0 +1,321 @@
+/* Patients Index Page */
+.patients-container {
+  max-width: var(--container-max-width);
+  margin: var(--spacing-2xl) auto;
+  padding: 0 20px;
+  font-family: var(--font-family);
+}
+
+.patients-container h1 {
+  color: var(--color-text-primary);
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: var(--spacing-sm);
+}
+
+.patients-summary {
+  color: var(--color-text-muted);
+  font-size: 14px;
+  margin-bottom: var(--spacing-lg);
+}
+
+.patients-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--color-white);
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.patients-table thead {
+  background: var(--color-header-bg);
+}
+
+.patients-table th {
+  color: var(--color-white);
+  font-weight: 500;
+  text-align: left;
+  padding: 14px var(--spacing-md);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.patients-table td {
+  padding: 14px var(--spacing-md);
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+  font-size: 14px;
+}
+
+.patients-table tbody tr:hover {
+  background: var(--color-bg-hover);
+}
+
+.patients-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.no-patients {
+  text-align: center;
+  padding: var(--spacing-2xl);
+  color: var(--color-text-light);
+  font-size: 16px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: var(--spacing-lg);
+  padding: var(--spacing-md) 0;
+}
+
+.pagination-link {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-size: 14px;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.pagination-link:hover {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.pagination-info {
+  color: var(--color-text-muted);
+  font-size: 14px;
+}
+
+.patient-link {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.patient-link:hover {
+  text-decoration: underline;
+}
+
+/* Patient Show Page */
+.patient-detail {
+  max-width: var(--container-max-width);
+  margin: var(--spacing-2xl) auto;
+  padding: 0 20px;
+  font-family: var(--font-family);
+}
+
+.patient-header {
+  margin-bottom: var(--spacing-lg);
+}
+
+.back-link {
+  color: var(--color-text-muted);
+  text-decoration: none;
+  font-size: 14px;
+  display: inline-block;
+  margin-bottom: var(--spacing-sm);
+}
+
+.back-link:hover {
+  color: var(--color-primary);
+}
+
+.patient-detail h1 {
+  color: var(--color-text-primary);
+  font-size: 32px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.patient-info {
+  display: flex;
+  gap: var(--spacing-xl);
+  background: var(--color-white);
+  padding: 20px var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: var(--spacing-xl);
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.info-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--color-text-muted);
+}
+
+.info-value {
+  font-size: 16px;
+  color: var(--color-text-primary);
+  font-weight: 500;
+}
+
+.assessments-section h2 {
+  color: var(--color-text-primary);
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: var(--spacing-md);
+}
+
+.assessments-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--color-white);
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.assessments-table thead {
+  background: var(--color-header-bg);
+}
+
+.assessments-table th {
+  color: var(--color-white);
+  font-weight: 500;
+  text-align: left;
+  padding: 14px var(--spacing-md);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.assessments-table td {
+  padding: 14px var(--spacing-md);
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+  font-size: 14px;
+}
+
+.assessments-table tbody tr:hover {
+  background: var(--color-bg-hover);
+}
+
+.assessments-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.no-assessments {
+  text-align: center;
+  padding: var(--spacing-2xl);
+  color: var(--color-text-light);
+  font-size: 16px;
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.assessment-link {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.assessment-link:hover {
+  text-decoration: underline;
+}
+
+/* Assessment Show Page */
+.assessment-detail {
+  max-width: var(--container-max-width);
+  margin: var(--spacing-2xl) auto;
+  padding: 0 20px;
+  font-family: var(--font-family);
+}
+
+.assessment-header {
+  margin-bottom: var(--spacing-lg);
+}
+
+.assessment-detail h1 {
+  color: var(--color-text-primary);
+  font-size: 32px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.assessment-info {
+  display: flex;
+  gap: var(--spacing-xl);
+  background: var(--color-white);
+  padding: 20px var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: var(--spacing-xl);
+}
+
+.observations-section h2 {
+  color: var(--color-text-primary);
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: var(--spacing-md);
+}
+
+.observations-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--color-white);
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.observations-table thead {
+  background: var(--color-header-bg);
+}
+
+.observations-table th {
+  color: var(--color-white);
+  font-weight: 500;
+  text-align: left;
+  padding: 14px var(--spacing-md);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.observations-table td {
+  padding: 14px var(--spacing-md);
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+  font-size: 14px;
+}
+
+.observations-table td code {
+  background: var(--color-code-bg);
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.observations-table tbody tr:hover {
+  background: var(--color-bg-hover);
+}
+
+.observations-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.no-observations {
+  text-align: center;
+  padding: var(--spacing-2xl);
+  color: var(--color-text-light);
+  font-size: 16px;
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}

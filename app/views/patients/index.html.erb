@@ -1,0 +1,46 @@
+<div class="patients-container">
+  <h1>Patients</h1>
+
+  <div class="patients-summary">
+    Showing <%= @patients.count %> of <%= @total_count %> patients
+  </div>
+
+  <table class="patients-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Date of Birth</th>
+        <th>Sex at Birth</th>
+        <th>Assessments</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @patients.each do |patient| %>
+        <tr>
+          <td><%= link_to patient.name, patient_path(patient), class: "patient-link" %></td>
+          <td><%= patient.dob %></td>
+          <td><%= patient.sex_at_birth %></td>
+          <td><%= patient.assessments.count %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <% if @patients.empty? %>
+    <div class="no-patients">No patients found.</div>
+  <% end %>
+
+  <div class="pagination">
+    <% if @current_page > 1 %>
+      <%= link_to "← Previous", patients_path(page: @current_page - 1), class: "pagination-link" %>
+    <% end %>
+
+    <span class="pagination-info">
+      Page <%= @current_page %> of <%= @total_pages %>
+    </span>
+
+    <% if @current_page < @total_pages %>
+      <%= link_to "Next →", patients_path(page: @current_page + 1), class: "pagination-link" %>
+    <% end %>
+  </div>
+</div>

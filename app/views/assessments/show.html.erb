@@ -1,0 +1,50 @@
+<div class="assessment-detail">
+  <div class="assessment-header">
+    <%= link_to "← Back to #{@patient.name}", patient_path(@patient), class: "back-link" %>
+    <h1>Assessment <%= @assessment.reference %></h1>
+  </div>
+
+  <div class="assessment-info">
+    <div class="info-item">
+      <span class="info-label">Patient</span>
+      <span class="info-value"><%= @patient.name %></span>
+    </div>
+    <div class="info-item">
+      <span class="info-label">Date</span>
+      <span class="info-value"><%= @assessment.date %></span>
+    </div>
+    <div class="info-item">
+      <span class="info-label">Reference</span>
+      <span class="info-value"><%= @assessment.reference %></span>
+    </div>
+  </div>
+
+  <div class="observations-section">
+    <h2>Observations (<%= @observations.count %>)</h2>
+
+    <% if @observations.any? %>
+      <table class="observations-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Code</th>
+            <th>Value</th>
+            <th>Units</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @observations.each do |observation| %>
+            <tr>
+              <td><%= observation.name %></td>
+              <td><code><%= observation.code %></code></td>
+              <td><%= observation.value %></td>
+              <td><%= observation.units %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <div class="no-observations">No observations recorded for this assessment.</div>
+    <% end %>
+  </div>
+</div>
