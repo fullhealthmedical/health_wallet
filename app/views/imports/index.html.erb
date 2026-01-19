@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Import History</title>
+  </head>
+  <body>
+    <h1>Import History</h1>
+
+    <div style="margin-bottom: 20px;">
+      <%= link_to "Import New File", new_import_path, style: "padding: 10px 20px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px;" %>
+    </div>
+
+    <% if @imported_files.any? %>
+      <table style="width: 100%; border-collapse: collapse;">
+        <thead>
+          <tr style="background-color: #f8f9fa;">
+            <th style="padding: 10px; text-align: left; border: 1px solid #dee2e6;">File</th>
+            <th style="padding: 10px; text-align: left; border: 1px solid #dee2e6;">Status</th>
+            <th style="padding: 10px; text-align: left; border: 1px solid #dee2e6;">Uploaded</th>
+            <th style="padding: 10px; text-align: left; border: 1px solid #dee2e6;">Created</th>
+            <th style="padding: 10px; text-align: left; border: 1px solid #dee2e6;">Updated</th>
+            <th style="padding: 10px; text-align: left; border: 1px solid #dee2e6;">Errors</th>
+            <th style="padding: 10px; text-align: left; border: 1px solid #dee2e6;">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @imported_files.each do |imported_file| %>
+            <tr>
+              <td style="padding: 10px; border: 1px solid #dee2e6;">
+                <%= imported_file.filename %>
+              </td>
+              <td style="padding: 10px; border: 1px solid #dee2e6;">
+                <span style="color: <%= status_color(imported_file.status) %>; font-weight: bold;">
+                  <%= imported_file.status.upcase %>
+                </span>
+              </td>
+              <td style="padding: 10px; border: 1px solid #dee2e6;">
+                <%= imported_file.created_at.strftime("%b %d, %Y %I:%M %p") %>
+              </td>
+              <td style="padding: 10px; border: 1px solid #dee2e6;">
+                <%= imported_file.total_created %>
+              </td>
+              <td style="padding: 10px; border: 1px solid #dee2e6;">
+                <%= imported_file.total_updated %>
+              </td>
+              <td style="padding: 10px; border: 1px solid #dee2e6;">
+                <%= imported_file.error_count %>
+              </td>
+              <td style="padding: 10px; border: 1px solid #dee2e6;">
+                <%= link_to "View", import_path(imported_file) %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <p>No imports yet. <%= link_to "Import your first file", new_import_path %>.</p>
+    <% end %>
+
+    <div style="margin-top: 20px;">
+      <%= link_to "Back to Home", root_path %>
+    </div>
+  </body>
+</html>
+
+<% def status_color(status)
+  case status
+  when 'pending' then '#6c757d'
+  when 'processing' then '#ffc107'
+  when 'completed' then '#28a745'
+  when 'failed' then '#dc3545'
+  else '#6c757d'
+  end
+end %>

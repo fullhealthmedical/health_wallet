@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Import Lab Results</title>
+  </head>
+  <body>
+    <h1>Import Lab Results</h1>
+
+    <%= form_with model: @imported_file, url: imports_path, local: true, multipart: true do |form| %>
+      <% if @imported_file.errors.any? %>
+        <div style="color: red;">
+          <h2><%= pluralize(@imported_file.errors.count, "error") %> prohibited this import:</h2>
+          <ul>
+            <% @imported_file.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div>
+        <%= form.label :file, "Select Lab Results File (pipe-delimited format)" %>
+        <%= form.file_field :file, accept: ".txt,.csv", required: true %>
+      </div>
+
+      <div style="margin-top: 20px;">
+        <%= form.submit "Upload and Import" %>
+        <%= link_to "Cancel", imports_path %>
+      </div>
+    <% end %>
+
+    <div style="margin-top: 40px; padding: 20px; background-color: #f5f5f5; border-radius: 5px;">
+      <h3>File Format Requirements</h3>
+      <p>The file must be pipe-delimited with the following format:</p>
+      <pre>patient_name|dob|sex_at_birth|assessment_reference
+code|result|units
+code|result|units
+...</pre>
+      <h4>Valid LOINC Codes:</h4>
+      <ul>
+        <li>8480-6: Blood Pressure (Systolic)</li>
+        <li>8462-4: Blood Pressure (Diastolic)</li>
+        <li>8867-4: Heart Rate</li>
+        <li>8310-5: Body Temperature</li>
+        <li>9279-1: Respiratory Rate</li>
+        <li>2708-6: Oxygen Saturation</li>
+        <li>29463-7: Body Weight</li>
+        <li>8302-2: Body Height</li>
+        <li>2339-0: Blood Glucose</li>
+        <li>2093-3: Cholesterol</li>
+      </ul>
+    </div>
+  </body>
+</html>
